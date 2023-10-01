@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;
+	overflow-x: auto;
+	background: #0B0C23;
+	--mainColour: #1D0C3B;
+	--complimentColour: #261348;
+	--fontColour: rgb(255, 255, 255);
+	--buttonColour: rgba(120, 120, 170, 1.0);
+	--panelWidth: 390px;
+	--smallerPanelWidth: 255px;
+	--panelSpacing: 2vw;
+	--mirrorAngle: 180deg;
+}
+
+.mainDiv {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+#photoCanvas {
+	display: none;
+}
+
+#canvas {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: fit-content;
+	min-width: fit-content;
+	height: fit-content;
+	min-height: fit-content;
+	border-radius: 2px;
+	padding: 20px;
+	margin: 10px;
+	margin-top: 0;
+	margin-right: max(var(--panelSpacing), 50px);
+	padding-right: 30px;
+}
+
+.inlineDiv {
+	position: relative;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	min-width: fit-content;
+	height: fit-content;
+	min-height: fit-content;
+	border-radius: 2px;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	margin: 10px;
+	margin-top: 0;
+	margin-right: max(var(--panelSpacing), 50px);
+	padding-right: 30px;
+}
+
+h2 {
+	color: var(--fontColour);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	text-align: center;
+	border: none;
+	border-radius: 2px;
+	outline: none;
+	padding: 0;
+	margin: 10px;
+	margin-bottom: 40px;
+}
+
+.inlineBox {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+select {
+	display: block;
+	width: 200px;
+	min-width: 200px;
+	height: 40px;
+	min-height: 40px;
+	background: var(--mainColour);
+	color: var(--fontColour);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	text-align: left;
+	border: 2px solid var(--complimentColour);
+	border-radius: 2px;
+	outline: none;
+	padding: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 10px;
+	transition: 0.15s linear;
+}
+
+input {
+	display: block;
+	width: 200px;
+	min-width: 200px;
+	height: 40px;
+	min-height: 40px;
+	background: var(--mainColour);
+	color: var(--fontColour);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	text-align: center;
+	border: 2px solid var(--complimentColour);
+	border-radius: 2px;
+	outline: none;
+	padding: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 10px;
+	transition: 0.15s linear;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 300px;
+	height: 30px;
+	min-height: 30px;
+	background: var(--mainColour);
+	outline: none;
+	border-radius: 20px;
+	transition: 0.2s linear;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 50px;
+	height: 20px;
+	border-radius: 20px;
+	background: rgb(140, 255, 255);
+	cursor: pointer;
+}
+
+
+.fileLabel>input[type=file] {
+	display: none;
+}
+
+.fileLabel {
+	display: inline-block;
+	width: 40px;
+	min-width: 40px;
+	height: 40px;
+	min-height: 40px;
+	background: var(--buttonColour);
+	color: rgb(13, 13, 13);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	text-align: center;
+	border-radius: 2px;
+	padding: 0;
+	margin: 10px;
+	border: none;
+	cursor: pointer;
+	transition: 0.15s linear;
+}
+
+.fileLabel:hover {
+	background: rgb(140, 255, 255);
+}
+
+label>svg {
+	width: 17px;
+	stroke: rgb(13, 13, 13);
+	transform: translateY(8px);
+	pointer-events: none;
+}
+
+button {
+	width: 40px;
+	min-width: 40px;
+	height: 40px;
+	min-height: 40px;
+	background: var(--buttonColour);
+	color: rgb(13, 13, 13);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	text-align: center;
+	border: none;
+	border-radius: 2px;
+	outline: none;
+	padding: 0;
+	cursor: pointer;
+	margin: 10px;
+	transition: 0.15s linear;
+}
+
+button:hover {
+	background: rgba(150, 240, 150, 1.0);
+}
+
+button>svg {
+	width: 17px;
+	transform: translatey(2px);
+	pointer-events: none;
+}
+
+#trainButton {
+	width: 200px;
+	min-width: 200px;
+	font-size: 15px;
+}
+
+#trainOnce {
+	width: 200px;
+	min-width: 200px;
+	font-size: 15px;
+	background: var(--buttonColour);
+}
+
+#trainOnce:hover {
+	background: rgba(150, 255, 255, 1.0);
+}
+
+#resetButton {
+	width: 200px;
+	min-width: 200px;
+	font-size: 15px;
+	background: var(--buttonColour);
+}
+
+#resetButton:hover {
+	background: rgba(240, 150, 150, 1.0);
+}
