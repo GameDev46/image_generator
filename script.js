@@ -1,4 +1,4 @@
-import { NeuralNetwork } from "/neuralNetwork.js";
+import { NeuralNetwork } from "./neuralNetwork.js";
 
 const pixelWidth = 50;
 const pixelHeight = 50;
