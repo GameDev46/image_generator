@@ -1,12 +1,12 @@
 <a href="https://github.com/GameDev46" title="Go to GitHub repo">
-    <img src="https://img.shields.io/static/v1?label=GameDev46&message=Profile&color=Green&logo=github&style=for-the-badge&labelColor=1f1f22" alt="GameDev46 - image_generator">
-    <img src="https://img.shields.io/badge/Version-beta-orange?style=for-the-badge&labelColor=1f1f22" alt="GameDev46 - image_generator">
+    <img src="https://img.shields.io/static/v1?label=GameDev46&message=|&color=Green&logo=github&style=for-the-badge&labelColor=1f1f22" alt="GameDev46 - image_generator">
+    <img src="https://img.shields.io/badge/Version-beta%200.3.0-orange?style=for-the-badge&labelColor=1f1f22" alt="GameDev46 - image_generator">
 </a>
 
 
-![Static Badge](https://img.shields.io/badge/-HTML5-1f1f22?style=for-the-badge&logo=HTML5)
-![Static Badge](https://img.shields.io/badge/-CSS-1f1f22?style=for-the-badge&logo=CSS3&logoColor=6060ef)
-![Static Badge](https://img.shields.io/badge/-JavaScript-1f1f22?style=for-the-badge&logo=JavaScript)
+![Static Badge](https://img.shields.io/badge/--1f1f22?style=for-the-badge&logo=HTML5)
+![Static Badge](https://img.shields.io/badge/--1f1f22?style=for-the-badge&logo=CSS3&logoColor=6060ef)
+![Static Badge](https://img.shields.io/badge/--1f1f22?style=for-the-badge&logo=JavaScript)
     
 <a href="https://github.com/GameDev46/image_generator/stargazers">
     <img src="https://img.shields.io/github/stars/GameDev46/image_generator?style=for-the-badge&labelColor=1f1f22" alt="stars - image_generator">
@@ -17,17 +17,6 @@
 <a href="https://github.com/GameDev46/image_generator/issues">
     <img src="https://img.shields.io/github/issues/GameDev46/image_generator?style=for-the-badge&labelColor=1f1f22&color=blue"/>
  </a>
-
-<br>
-<br>
-
-<a href="https://github.com/GameDev46/image_generator/releases/">
-    <img src="https://img.shields.io/github/tag/GameDev46/image_generator?include_prereleases=&sort=semver&color=Green&style=for-the-badge&labelColor=1f1f22" alt="GitHub tag">
-</a>
-
-<a href="https://github.com/GameDev46/image_generator/issues">
-    <img src="https://img.shields.io/github/issues/GameDev46/image_generator?style=for-the-badge&labelColor=1f1f22" alt="issues - image_generator">
-</a>
 
 <br>
 <br>
@@ -50,6 +39,20 @@
 
 A basic program that uses a neural network to try to recreate and blend between 2 simple input images (WIP)
 
-## Website
+# Usage
 
-[click here for wesbite](https://gamedev46.github.io/image_generator/)
+This project is still being worked and and so is only capable of recreating simple images with a limited number of colours!
+
+*Activation Function* - This is the function that the neural networks use to learn the images, I reccomend leaving this on sigmoid but you can change it to visualise what each one does
+
+*Colour* - This controls whether the network should use RGB values (default) or grayscale (which is easier for the network to learn using)
+
+*Sliders* - Each slider is an input to the neural network, when they are all to the left it should be the first input image and when they are all to the right it should show the second input image
+
+*File add button* - You can use this to add the 2 images to blend between, to actually load them the 2 images should be in a folder together which can then be selected via the add file button
+
+*Train button* - Trains the neural network until stopped
+
+*1 Epoch button* - Backpropigates through the network once
+
+*Reset* - Resets the neural network back to an untrained state (randomises the weights and biases)
