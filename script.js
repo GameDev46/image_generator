@@ -1,27 +1,7 @@
-/*
-
- _____                         ______                 ___   ____ 
-|  __ \                        |  _  \               /   | / ___|
-| |  \/  __ _  _ __ ___    ___ | | | |  ___ __   __ / /| |/ /___ 
-| | __  / _` || '_ ` _ \  / _ \| | | | / _ \\ \ / // /_| || ___ \
-| |_\ \| (_| || | | | | ||  __/| |/ / |  __/ \ V / \___  || \_/ |
- \____/ \__,_||_| |_| |_| \___||___/   \___|  \_/      |_/\_____/
-
-
-*/
-
-/* 
-	AUTHOR: GameDev46
-
-	Youtube: https://www.youtube.com/@gamedev46
-	Github: https://github.com/GameDev46
-*/
-
 import { NeuralNetwork } from "./neuralNetwork.js";
 
 const pixelWidth = 50;
 const pixelHeight = 50;
-
 const pixelSize = 10;
 
 const normalisingNum = 4;
@@ -51,13 +31,10 @@ canvas.height = pixelSize * pixelHeight;
 document.getElementById("activationSelect").addEventListener("change", e => {
 
 	let activation = document.getElementById("activationSelect").value;
-
 	presets.activation = [activation, activation]
 
 	if (activation == "tanh") {
-
 		presets.activation = ["sigmoid", activation, activation];
-		
 	}
 
 	/*if (activation == "sin") {
@@ -71,10 +48,8 @@ document.getElementById("activationSelect").addEventListener("change", e => {
 
 
 document.getElementById("uploadFolder").addEventListener("change", e => {
-
 	const selectedFolder = e.target.files;
 	processFolder(selectedFolder)
-
 })
 
 let loadedImages = [];
@@ -97,28 +72,21 @@ function createImageFromUpload(image) {
 	let pixels = capture.data;
 
 	// Normalise data
-
 	for (let i = 0; i < pixels.length; i++) {
-
 		pixels[i] = pixels[i] / 255;
-
 		//pixels[i] *= 2;
 		//pixels[i] -= 1;
-
 	}
 
-	/*let grayscale = [];
-	
+	/*
 	// Grayscale
-
+	let grayscale = [];
 	for (let i = 0; i < pixels.length; i++) {
-
 		let averageCol = pixels[i] + pixels[i + 1] + pixels[i + 2];
 		averageCol = averageCol / 4
 		averageCol = averageCol / 255
 
 		grayscale.push(averageCol)
-		
 	}*/
 
 	return pixels;
@@ -131,105 +99,66 @@ function processFolder(folder) {
 	for (let i = 0; i < Math.min(2, folder.length); i++) {
 
 		let imgURL = URL.createObjectURL(folder[i]);
-
 		loadedImages[i] = new Image;
-
 		loadedImages[i].onload = function() {
 
 			let cap = createImageFromUpload(loadedImages[i]);
-
 			URL.revokeObjectURL(this.src)
 
 			trainingData[i] = {
 				targets: cap
 			}
-
 		}
 
 		loadedImages[i].src = imgURL;
-
 	}
-
 }
 
 
 let isTraining = false;
-
 let trainInterval;
 
 document.getElementById("trainButton").addEventListener("click", e => {
-
 	isTraining = !isTraining;
-
 	if (isTraining) {
-
 		document.getElementById("trainButton").innerText = "Training";
-
 		trainInterval = setInterval(trainNet, 200);
-
 	}
 	else {
-
 		clearInterval(trainInterval);
-
 		document.getElementById("trainButton").innerText = "Train";
-
 	}
-
 })
 
 let trainingOnce = false
-
 document.getElementById("trainOnce").addEventListener("click", e => {
-
 	if (!trainingOnce) {
-
 		trainingOnce = true;
-
 		document.getElementById("trainOnce").innerText = "Training";
-
 		trainNet()
-
 		document.getElementById("trainOnce").innerText = "1 Epoch";
-
 		trainingOnce = false;
-
 	}
-
 })
 
 document.getElementById("resetButton").addEventListener("click", e => {
-
 	resetNetwork();
-
 });
 
 function resetNetwork() {
-
 	net = new NeuralNetwork(presets);
-
 	updateImage();
-
 }
 
 function setupListeners() {
-
 	let inputElements = document.getElementsByTagName("input");
-
 	for (let i = 0; i < inputElements.length; i++) {
-
 		if (inputElements[i].type == "range") {
-
 			inputElements[i].addEventListener("input", e => {
-
 				updateImage();
-
 			})
-
 		}
-
 	}
-
 }
 
 function trainNet() {
@@ -268,16 +197,11 @@ function trainNet() {
 				}
 
 				if (presets.outputs == 1) {
-
 					let alpha = (red + green + blue) / 3;
-
 					net.train([normX, normY, s, s, s, s, s, s, s, s], [alpha]);
-
 				}
 				else {
-
 					net.train([normX, normY, s, s, s, s, s, s, s, s], [red, green, blue]);
-
 				}
 
 			}
@@ -287,11 +211,9 @@ function trainNet() {
 	}
 
 	updateImage();
-
 }
 
 document.getElementById("colourMode").addEventListener("change", e => {
-
 	if (document.getElementById("colourMode").value == "grayscale") {
 		presets.outputs = 1;
 	}
@@ -300,16 +222,12 @@ document.getElementById("colourMode").addEventListener("change", e => {
 	}
 
 	resetNetwork();
-
 	updateImage();
-
 })
 
 document.getElementById("learningRate").addEventListener("change", e => {
-
 	presets.learningRate = Number(document.getElementById("learningRate").value);
 	net.learningRate = Number(document.getElementById("learningRate").value);
-
 })
 
 function updateImage() {
@@ -338,7 +256,6 @@ function updateImage() {
 		for (let y = 0; y < pixelHeight * 4; y += 4) {
 
 			let normX = x / (pixelWidth * normalisingNum);
-
 			let normY = y / (pixelHeight * normalisingNum);
 
 			if (presets.activation[0] == "tanh" || presets.activation[0] == "leakyrelu" || presets.activation[0] == "sin") {
@@ -356,18 +273,14 @@ function updateImage() {
 			let blue = 0;
 
 			if (presets.outputs == 1) {
-
 				red = guess[0] * 255;
 				green = guess[0] * 255;
 				blue = guess[0] * 255;
-
 			}
 			else {
-
 				red = guess[0] * 255;
 				green = guess[1] * 255;
 				blue = guess[2] * 255;
-
 			}
 
 			if (presets.activation[3] == "tanh") {
@@ -385,5 +298,4 @@ function updateImage() {
 }
 
 updateImage();
-
 setupListeners();
